@@ -44,9 +44,10 @@ class KeyboardService:
         Returns:
             Point: The selected direction.
         """
-        dy = 0
+        dx = 0
+        dy = 1
 
-        direction = Point(0, dy)
+        direction = Point(dx, dy)
         direction = direction.scale(self._cell_size)
 
         return direction
