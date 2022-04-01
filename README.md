@@ -1,7 +1,7 @@
-# cse210-04
- 
-# Greed
-Greed is a game in which the player seeks to gather as many falling gems as possible. The game continues as long as the player wants more!
+# Space Invaders
+Space Invaders is a classic arcade game. Help save planet earth from the invaders
+by shooting them down with your rockets! Use the arrows keys to move left and right
+and the space bar to shoot your rockets.
 
 ## Getting Started
 ---
@@ -11,7 +11,7 @@ python3 -m pip install raylib
 ```
 After you've installed the required libraries, open a terminal and browse to the project's root folder. Start the program by running the following command.```
 
-python3 rfk 
+python3 CSE210-FINAL-PROJECT 
 ```
 You can also run the program from an IDE like Visual Studio Code. Start your IDE and open the 
 project folder. Select the main module inside the hunter folder and click the "run" icon.
@@ -20,12 +20,17 @@ project folder. Select the main module inside the hunter folder and click the "r
 ---
 The project files and folders are organized as follows:
 ```
-root                    (project root folder)
-+-- rfk                 (source code for game)
-  +-- data              (data files for game)
-  +-- game              (specific game classes)
-  +-- __main__.py       (entry point for program)
-+-- README.md           (general info)
+root                          (project root folder)
++-- CSE210-FINAL-PROJECT      (source code for game)
+  +-- game                    (specific game classes)
+    +-- casting               (various actor classes)
+    +-- directing             (director and scene manager classes)
+    +-- scripting             (various action classes)
+    +-- services              (various service classes)
+    +-- shared                (various shared classes)
+  +-- __main__.py             (entry point for program)
+  +-- constants.py            (game constants)
++-- README.md                 (general info)
 ```
 
 ## Required Technologies
@@ -37,6 +42,7 @@ root                    (project root folder)
 ---
 * Rosana Garcia
 * Jessica Henry
-* Thiago Gouvea Leite
+* Thiago Gouvêa Leite
 * Megan Stark
 * Sterling Welker
+

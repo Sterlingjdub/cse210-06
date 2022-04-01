@@ -52,7 +52,7 @@ class KeyboardService:
         else:
             False
 
-    def get_artifact_direction(self):
+    def get_alien_direction(self):
         dx = 0
         dy = 1
         direction = Point(dx,dy)

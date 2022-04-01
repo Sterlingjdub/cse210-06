@@ -1,5 +1,8 @@
-from game.casting.artifact import Artifact
+from game.casting.rocket import Rocket
+from game.casting.actor import Actor
 from game.shared.color import Color
+from game.shared.point import Point
+from constants import *
 
 class Director:
     """A person who directs the game. 
@@ -40,34 +43,32 @@ class Director:
         Args:
             cast (Cast): The cast of actors.
         """
-        robot = cast.get_first_actor("robots")
-        artifacts = cast.get_actors("gem")
-        artifacts.extend(cast.get_actors("rock"))
+        hero = cast.get_first_actor("hero")
+        aliens = cast.get_actors("aliens")
         velocity = self._keyboard_service.get_direction()
         
-
         #Manejo del la bala (Rocket)
         rocket = self._keyboard_service.create_rocket()
         if(rocket):
-            artifact = Artifact()
-            artifact.set_text("^")
-            artifact.set_font_size(15)
-            artifact.set_color(Color(128, 0, 128))
-            artifact.set_position(robot.get_position())
-            cast.add_actor("rockets", artifact)
+            rocket = Rocket()
+            rocket.set_text("^")
+            rocket.set_font_size(30)
+            rocket.set_color(Color(128, 0, 128))
+            rocket.set_position(hero.get_position())
+            cast.add_actor("rockets", rocket)
 
-        robot.set_velocity(velocity)        
-        artifact_velocity = self._keyboard_service.get_artifact_direction()
+        hero.set_velocity(velocity)        
+        alien_velocity = self._keyboard_service.get_alien_direction()
         
-        rockets = robot = cast.get_actors("rockets")
+        rockets = hero = cast.get_actors("rockets")
         velocity_rocket = self._keyboard_service.get_rocket_direction()
 
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
 
-        for rock in artifacts:
-            rock.set_velocity(artifact_velocity)
-            rock.move_next(max_x,max_y)
+        for alien in aliens:
+            alien.set_velocity(alien_velocity)
+            alien.move_next(max_x,max_y)
 
         for r in rockets:
             r.set_velocity(velocity_rocket)
@@ -80,31 +81,25 @@ class Director:
             cast (Cast): The cast of actors.
         """
         banner = cast.get_first_actor("banners")
-        robot = cast.get_first_actor("robots")
-        artifacts = cast.get_actors("gem")
-        rocks = cast.get_actors("rock")
-        bullets = cast.get_actors("rockets")
+        hero = cast.get_first_actor("hero")
+        aliens = cast.get_actors("aliens")
+        rockets = cast.get_actors("rockets")
 
         banner.set_text("")
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
-        robot.move_next(max_x, max_y)
+        hero.move_next(max_x, max_y)
         
         # For each rocket, if its position is equals to the position of a rock or a gem
-        #both rocket and artifact disapears
-        for rocket in bullets:
+        #both rocket and alien disapears
+        for rocket in rockets:
             if(rocket.get_position().get_y() > 400):
                 cast.remove_actor("rockets",rocket)  
             else:
-                for artifact in artifacts:
-                    if rocket.get_position().equals(artifact.get_position()):
-                        cast.remove_actor("gem",artifact)  
+                for alien in aliens:
+                    if rocket.get_position().equals(alien.get_position()):
+                        cast.remove_actor("aliens",aliens)  
                         cast.remove_actor("rockets",rocket)  
-
-                for rock in rocks:
-                    if rocket.get_position().equals(rock.get_position()):
-                        cast.remove_actor("rock",rock)  
-                        cast.remove_actor("rockets",rocket)
         
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
@@ -116,3 +111,26 @@ class Director:
         actors = cast.get_all_actors()
         self._video_service.draw_actors(actors)
         self._video_service.flush_buffer()
+
+    def _handle_game_over(self, cast):
+        """Shows the 'game over' message and turns the snake and food white if the game is over.
+        
+        Args:
+            cast (Cast): The cast of Actors in the game.
+        """
+        if self._is_game_over:
+            hero = cast.get_first_actor("hero")
+            aliens = cast.get_first_actor("aliens")
+
+            x = int(MAX_X / 2)
+            y = int(MAX_Y / 2)
+            position = Point(x, y)
+
+            message = Actor()
+            message.set_text("Game Over!")
+            message.set_position(position)
+            cast.add_actor("messages", message)
+
+            for alien in aliens:
+                alien.set_color(WHITE)
+            hero.set_color(WHITE)
