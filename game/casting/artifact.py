@@ -3,22 +3,37 @@ from game.casting.actor import Actor
 
 class Artifact(Actor):
     """
-    An item that is either a gem or a rock. 
+    An item of cultural or historical interest. 
     
-    The responsibility of an Artifact is to provide a value depending on if it is a gem or rock.
+    The responsibility of an Artifact is to provide a message about itself.
 
     Attributes:
-        points (int): A value of the Artifact.
+        _message (string): A short description about the artifact.
     """
     def __init__(self):
-        """Constructs a new Artifact."""
         super().__init__()
-        self._get_point = 1
+        self._message = ""
+        
+    def get_message(self):
+        """Gets the artifact's message.
+        
+        Returns:
+            string: The message.
+        """
+        return self._message
     
-    def set_points(self, get_point):
-        """Set the points for artifacts."""
-        self._get_point = get_point
+    def set_message(self, message):
+        """Updates the message to the given one.
+        
+        Args:
+            message (string): The given message.
+        """
+        self._message = message
 
-    def get_earn_point(self):
-        """Gets the points value of Artifact."""
-        return self._get_point
+    def set_velocity(self, velocity):
+        """Updates the message to the given one.
+        
+        Args:
+            message (string): The given message.
+        """
+        self._velocity = velocity
