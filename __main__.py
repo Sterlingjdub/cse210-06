@@ -1,9 +1,11 @@
 import os
 import random
+from constants import *
 from game.casting.actor import Actor
 from game.casting.alien import Alien
 from game.casting.hero import Hero
 from game.casting.cast import Cast
+from game.casting.score import Score
 
 from game.directing.director import Director
 
@@ -32,9 +34,17 @@ def main():
     # create the cast
     cast = Cast()
     
+    # score
+    score = Score()
+    score.set_text("")
+    score.set_font_size(FONT_SIZE)
+    score.set_color(WHITE)
+    score.set_position(Point(10, 5))
+    cast.add_actor("scores", score)
+
     # create the banner
     banner = Actor()
-    banner.set_text("")
+    banner.set_text(f"{score}")
     banner.set_font_size(FONT_SIZE)
     banner.set_color(WHITE)
     banner.set_position(Point(CELL_SIZE, 0))
@@ -42,7 +52,7 @@ def main():
     
     # create the hero
     x = int(MAX_X / 2)
-    y = int(MAX_Y / 2)
+    y = int(1000)
     position = Point(x, y)
 
     hero = Actor()

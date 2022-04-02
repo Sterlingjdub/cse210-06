@@ -1,6 +1,9 @@
 from game.casting.alien import Alien
+from game.casting.actor import Actor
 from game.casting.rocket import Rocket
 from game.shared.color import Color
+from game.shared.point import Point
+from constants import *
 
 class Director:
     """A person who directs the game. 
@@ -47,7 +50,6 @@ class Director:
         aliens.extend(cast.get_actors("rock")) # Union of class aliens and rocks
         velocity = self._keyboard_service.get_direction()
         
-
         #Manejo del la bala (Rocket)
         rocket = self._keyboard_service.create_rocket()
         if(rocket):
@@ -104,11 +106,6 @@ class Director:
                     if rocket.get_position().equals(alien.get_position()):
                         cast.remove_actor("alien",alien)  
                         cast.remove_actor("rockets",rocket)  
-
-                for rock in rocks:
-                    if rocket.get_position().equals(rock.get_position()):
-                        cast.remove_actor("rock",rock)  
-                        cast.remove_actor("rockets",rocket)
         
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
@@ -120,3 +117,26 @@ class Director:
         actors = cast.get_all_actors()
         self._video_service.draw_actors(actors)
         self._video_service.flush_buffer()
+
+    def _handle_game_over(self, cast):
+        """Shows the 'game over' message and turns the snake and food white if the game is over.
+        
+        Args:
+            cast (Cast): The cast of Actors in the game.
+        """
+        if self._is_game_over:
+            hero = cast.get_first_actor("hero")
+            aliens = cast.get_first_actor("aliens")
+
+            x = int(MAX_X / 2)
+            y = int(MAX_Y / 2)
+            position = Point(x, y)
+
+            message = Actor()
+            message.set_text("Game Over!")
+            message.set_position(position)
+            cast.add_actor("messages", message)
+
+            for alien in aliens:
+                alien.set_color(WHITE)
+            hero.set_color(WHITE)
