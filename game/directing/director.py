@@ -106,6 +106,10 @@ class Director:
                     if rocket.get_position().equals(alien.get_position()):
                         cast.remove_actor("alien",alien)  
                         cast.remove_actor("rockets",rocket)  
+                for r in rocks:
+                    if rocket.get_position().equals(r.get_position()):
+                        cast.remove_actor("rock",r)  
+                        cast.remove_actor("rockets",rocket)  
         
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
