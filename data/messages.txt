@@ -20,7 +20,7 @@ It's Lucy Ricardo. "Aaaah, Ricky!", she says.
 You stumble upon Bill Gates' stand-up act.
 Just an autographed copy of War and Peace.
 It's the Will Rogers Highway. Who was Will Rogers, anyway?
-It's another robot, more advanced in design than you but strangely immobile.
+It's another hero, more advanced in design than you but strangely immobile.
 Leonard Richardson is here, asking people to lick him.
 It's a stupid mask, fashioned after a beagle.
 Your State Farm Insurance(tm) representative!
@@ -34,7 +34,7 @@ A Texas Instruments of Destruction calculator.
 It's a dark, amphorous blob of matter.
 Just a pincushion.
 It's a mighty zombie talking about some love and prosperity.
-"Dear robot, you may have already won our 10 MILLION DOLLAR prize..."
+"Dear hero, you may have already won our 10 MILLION DOLLAR prize..."
 It's just an object.
 A mere collection of pixels.
 A badly dented high-hat cymbal lies on its side here.
@@ -51,8 +51,8 @@ A "Get Out of Jail Free" card.
 An incredibly expensive "Mad About You" collector plate.
 Paul Moyer's necktie.
 A haircut and a real job. Now you know where to get one!
-An automated robot-hater. It frowns disapprovingly at you.
-An automated robot-liker. It smiles at you.
+An automated hero-hater. It frowns disapprovingly at you.
+An automated hero-liker. It smiles at you.
 It's a black hole. Don't fall in!
 Just a big brick wall.
 You found kitten! No, just kidding.
@@ -116,7 +116,7 @@ This is the world-famous Chain of Jockstraps.
 A trash compactor, compacting away.
 This toaster strudel is riddled with bullet holes!
 It's a hologram of a crashed helicopter.
-This is a television. On screen you see a robot strangely similar to yourself.
+This is a television. On screen you see a hero strangely similar to yourself.
 This balogna has a first name, it's R-A-N-C-I-D.
 A salmon hatchery? Look again. It's merely a single salmon.
 It's a rim shot. Ba-da-boom!
@@ -136,7 +136,7 @@ A brain cell. Oddly enough, it seems to be functioning.
 Tea and/or crumpets.
 This jukebox has nothing but Cliff Richards albums in it.
 It's a Quaker Oatmeal tube, converted into a drum.
-This is a remote control. Being a robot, you keep a wide berth.
+This is a remote control. Being a hero, you keep a wide berth.
 It's a roll of industrial-strength copper wire.
 Oh boy! Grub! Er, grubs.
 A puddle of mud, where the mudskippers play.
@@ -159,7 +159,7 @@ This TRS-80 III is eerily silent.
 A toilet bowl occupies this space.
 This peg-leg is stuck in a knothole!
 It's a solitary vacuum tube.
-This corroded robot is clutching a mitten.
+This corroded hero is clutching a mitten.
 "Hi, I'm Anson Williams, TV's 'Potsy'."
 This subwoofer was blown out in 1974.
 Three half-pennies and a wooden nickel.
@@ -171,7 +171,7 @@ Ne'er but a potted plant.
 A parrot, kipping on its back.
 A forgotten telephone switchboard.
 A forgotten telephone switchboard operator.
-It's an automated robot-disdainer. It pretends you're not there.
+It's an automated hero-disdainer. It pretends you're not there.
 It's a portable hole. A sign reads: "Closed for the winter".
 Just a moldy loaf of bread.
 A little glass tub of Carmex. ($.89) Too bad you have no lips.
@@ -180,7 +180,7 @@ It's a zen simulation, trapped within an ASCII character.
 It's a copy of "The Rubaiyat of Spike Schudy".
 It's "War and Peace" (unabridged, very small print).
 A willing, ripe tomato bemoans your inability to digest fruit.
-A robot comedian. You feel amused.
+A hero comedian. You feel amused.
 It's KITT, the talking car.
 Here's Pete Peterson. His batteries seem to have long gone dead.
 "Blup, blup, blup", says the mud pot.

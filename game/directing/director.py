@@ -1,4 +1,5 @@
-from game.casting.artifact import Artifact
+from game.casting.alien import Alien
+from game.casting.rocket import Rocket
 from game.shared.color import Color
 
 class Director:
@@ -35,70 +36,73 @@ class Director:
         self._video_service.close_window()
 
     def _get_inputs(self, cast):
-        """Gets directional input from the keyboard and applies it to the robot.
+        """Gets directional input from the keyboard and applies it to the hero.
         
         Args:
             cast (Cast): The cast of actors.
         """
-        robot = cast.get_first_actor("robots")
-        artifacts = cast.get_actors("gem")
-        artifacts.extend(cast.get_actors("rock"))
+        # Get current actors.
+        hero = cast.get_first_actor("heros")
+        aliens = cast.get_actors("alien")
+        aliens.extend(cast.get_actors("rock")) # Union of class aliens and rocks
         velocity = self._keyboard_service.get_direction()
         
 
         #Manejo del la bala (Rocket)
         rocket = self._keyboard_service.create_rocket()
         if(rocket):
-            artifact = Artifact()
-            artifact.set_text("^")
-            artifact.set_font_size(15)
-            artifact.set_color(Color(128, 0, 128))
-            artifact.set_position(robot.get_position())
-            cast.add_actor("rockets", artifact)
+            rocket = Rocket()
+            rocket.set_text("^")
+            rocket.set_font_size(15)
+            rocket.set_color(Color(128, 0, 128))
+            rocket.set_position(hero.get_position())
+            cast.add_actor("rockets", rocket)
 
-        robot.set_velocity(velocity)        
-        artifact_velocity = self._keyboard_service.get_artifact_direction()
+        hero.set_velocity(velocity)        
+        alien_velocity = self._keyboard_service.get_alien_direction()
         
-        rockets = robot = cast.get_actors("rockets")
+        rockets = hero = cast.get_actors("rockets")
         velocity_rocket = self._keyboard_service.get_rocket_direction()
 
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
 
-        for rock in artifacts:
-            rock.set_velocity(artifact_velocity)
-            rock.move_next(max_x,max_y)
-
         for r in rockets:
             r.set_velocity(velocity_rocket)
             r.move_next(max_x,max_y)
 
+        for rock in aliens:
+            rock.set_velocity(alien_velocity)
+            rock.move_next(max_x,max_y)
+
+        
+
     def _do_updates(self, cast):
-        """Updates the robot's position and resolves any collisions with artifacts.
+        """Updates the hero's position and resolves any collisions with aliens.
         
         Args:
             cast (Cast): The cast of actors.
         """
         banner = cast.get_first_actor("banners")
-        robot = cast.get_first_actor("robots")
-        artifacts = cast.get_actors("gem")
+        hero = cast.get_first_actor("heros")
+        aliens = cast.get_actors("alien")
         rocks = cast.get_actors("rock")
         bullets = cast.get_actors("rockets")
 
         banner.set_text("")
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
-        robot.move_next(max_x, max_y)
+        hero.move_next(max_x, max_y)
         
         # For each rocket, if its position is equals to the position of a rock or a gem
-        #both rocket and artifact disapears
+        #both rocket and alien disapears
         for rocket in bullets:
-            if(rocket.get_position().get_y() > 400):
+            if(rocket.get_position().get_y() > 580):
                 cast.remove_actor("rockets",rocket)  
             else:
-                for artifact in artifacts:
-                    if rocket.get_position().equals(artifact.get_position()):
-                        cast.remove_actor("gem",artifact)  
+                for alien in aliens:
+                    if rocket.get_position().equals(alien.get_position()):
+                        cast.remove_actor("alien",alien)  
                         cast.remove_actor("rockets",rocket)  
 
                 for rock in rocks:
