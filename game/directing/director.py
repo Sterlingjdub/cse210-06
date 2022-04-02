@@ -84,11 +84,16 @@ class Director:
         hero = cast.get_first_actor("hero")
         aliens = cast.get_actors("aliens")
         rockets = cast.get_actors("rockets")
+        score = cast.get_first_actor("scores")
 
         banner.set_text("")
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         hero.move_next(max_x, max_y)
+
+        self._points = score.add_points(aliens, hero)
+
+        score.set_text(f"Score: {self._points}")
         
         # For each rocket, if its position is equals to the position of a rock or a gem
         #both rocket and alien disapears

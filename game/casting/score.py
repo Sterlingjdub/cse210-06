@@ -1,7 +1,7 @@
-from game.casting.actor import Actor
+from game.casting.aliens import Aliens
 
 
-class Score(Actor):
+class Score(Aliens):
     """
     A record of points made or lost. 
     
@@ -15,13 +15,17 @@ class Score(Actor):
     def __init__(self):
         super().__init__()
         self._points = 0
-        self.add_points(0)
 
-    def add_points(self, points):
-        """Adds the given points to the score's total points.
+    def add_points(self, aliens, hero):
+        """Updates the message to the given one.
         
-        Args:
-            points (int): The points to add.
+        Returns:
+            _points (int): The updated score.
         """
-        self._points += points
-        self.set_text(f"Score: {self._points}")
+        for alien in aliens:
+            if hero.get_position().equals(alien.get_position()):
+                if alien.get_text() == '\/':
+                    points = 1
+                alien.set_text("")
+                self._points += points
+        return self._points

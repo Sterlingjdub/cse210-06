@@ -37,3 +37,20 @@ class Aliens(Actor):
             velocity (string): The given velocity.
         """
         self._velocity = velocity
+
+    def get_text(self):
+        """Gets the artifact's message.
+        
+        Returns:
+            string: The message.
+        """
+        return self._text
+
+    def set_text(self, text): 
+        """Assigns points based on artifact type (rock or gem).
+        
+        Returns:
+            _points (int): the appropriate number of points for the 
+            given artifact type.
+        """
+        self._text = text

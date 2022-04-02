@@ -21,6 +21,11 @@ def main():
     
     # score
     score = Score()
+    score.set_text("")
+    score.set_font_size(FONT_SIZE)
+    score.set_color(WHITE)
+    score.set_position(Point(10, 5))
+    cast.add_actor("scores", score)
 
     # create the banner
     banner = Actor()
@@ -45,7 +50,7 @@ def main():
     
     # creation of aliens
     for n in range(DEFAULT_ALIENS):
-        text = "*"
+        text = "\/"
         
         x = random.randint(1, COLS - 1)
         y = random.randint(1, (ROWS))

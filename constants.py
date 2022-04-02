@@ -1,11 +1,12 @@
 from game.shared.color import Color
+import random
 
 # GAME CONSTANTS
 FRAME_RATE = 12
 MAX_X = 900
 MAX_Y = 600
 CELL_SIZE = 15
-FONT_SIZE = 30
+FONT_SIZE = 20
 ALIEN_SIZE = 40
 COLS = 60
 ROWS = 40
