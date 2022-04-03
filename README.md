@@ -3,6 +3,9 @@ Space Invaders is a classic arcade game. Help save planet earth from the invader
 by shooting them down with your rockets! Use the arrows keys to move left and right
 and the space bar to shoot your rockets.
 
+# Documentation
+The documentation of the game is avaiable in the following [link](https://docs.google.com/document/d/1lK1QL9pLGmwIDEGoJSVN-ENFjr9LvWHyWvMuAj1IewY/edit?usp=sharing)
+
 ## Getting Started
 ---
 Make sure you have Python 3.8.0 or newer and Raylib Python CFFI 3.7 installed and running on your machine. You can install Raylib Python CFFI by opening a terminal and running the following command.
@@ -45,6 +48,3 @@ root                          (project root folder)
 * Thiago Gouvêa Leite
 * Megan Stark
 * Sterling Welker
-
-# Documentation
-For further information please visit the following [link](https://docs.google.com/document/d/1lK1QL9pLGmwIDEGoJSVN-ENFjr9LvWHyWvMuAj1IewY/edit?usp=sharing)
