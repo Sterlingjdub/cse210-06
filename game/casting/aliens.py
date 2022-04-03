@@ -68,3 +68,10 @@ class Aliens(Actor):
             given artifact type.
         """
         self._text = text
+
+    def change_position(self):        
+        x = random.randint(1, COLS - 1)
+        y = 0
+        position = Point(x, y)
+        position = position.scale(CELL_SIZE)
+        self.set_position(position)

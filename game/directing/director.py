@@ -78,8 +78,7 @@ class Director:
         for rock in aliens:
             rock.set_velocity(alien_velocity)
             rock.move_next(max_x,max_y)
-
-        
+                
 
     def _do_updates(self, cast):
         """Updates the hero's position and resolves any collisions with aliens.
@@ -106,7 +105,7 @@ class Director:
                 for alien in aliens:
                     if rocket.get_position().equals(alien.get_position()):
                         self.score.increase_score(alien.value)
-                        cast.remove_actor("alien",alien)  
+                        alien.change_position()  
                         cast.remove_actor("rockets",rocket)  
                         
                         break  
