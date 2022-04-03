@@ -39,7 +39,8 @@ root                          (project root folder)
 * Raylib Python CFFI 3.7
 
 # Documentation
- To see the pinciples used to develop this game visit following [link](https://byui-cse.github.io/cse210-course-competency/abstraction/materials/hilo-specification.html)
+For further information please visit the following [link](https://byui-cse.github.io/cse210-course-competency/abstraction/materials/hilo-specification.html)
+
 ## Authors
 ---
 * Rosana Garcia
