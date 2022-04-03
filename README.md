@@ -39,7 +39,7 @@ root                          (project root folder)
 * Raylib Python CFFI 3.7
 
 # Documentation
- To see the pinciples used to develop this game visit [link](https://docs.google.com/document/d/1lK1QL9pLGmwIDEGoJSVN-ENFjr9LvWHyWvMuAj1IewY/edit?usp=sharing) link
+ To see the pinciples used to develop this game visit .[link].(https://docs.google.com/document/d/1lK1QL9pLGmwIDEGoJSVN-ENFjr9LvWHyWvMuAj1IewY/edit?usp=sharing) link
 ## Authors
 ---
 * Rosana Garcia
