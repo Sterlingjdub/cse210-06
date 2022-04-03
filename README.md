@@ -38,9 +38,6 @@ root                          (project root folder)
 * Python 3.8.0
 * Raylib Python CFFI 3.7
 
-# Documentation
-For further information please visit the following [link](https://byui-cse.github.io/cse210-course-competency/abstraction/materials/hilo-specification.html)
-
 ## Authors
 ---
 * Rosana Garcia
@@ -49,3 +46,5 @@ For further information please visit the following [link](https://byui-cse.githu
 * Megan Stark
 * Sterling Welker
 
+# Documentation
+For further information please visit the following [link](https://docs.google.com/document/d/1lK1QL9pLGmwIDEGoJSVN-ENFjr9LvWHyWvMuAj1IewY/edit?usp=sharing)
