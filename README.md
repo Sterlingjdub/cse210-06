@@ -1,4 +1,4 @@
-# Space Invaders
+# Space Invaders 🚀 👾
 Space Invaders is a classic arcade game. Help save planet earth from the invaders
 by shooting them down with your rockets! Use the arrows keys to move left and right
 and the space bar to shoot your rockets.
