@@ -33,15 +33,30 @@ class KeyboardService:
             dx = -1
         
         if pyray.is_key_down(pyray.KEY_RIGHT):
-            dx = 1
+            dx = 2
         
-        if pyray.is_key_down(pyray.KEY_UP):
-            dy = -1
-        
-        if pyray.is_key_down(pyray.KEY_DOWN):
-            dy = 1
 
         direction = Point(dx, dy)
         direction = direction.scale(self._cell_size)
         
+        return direction
+
+    def create_rocket(self):
+        if pyray.is_key_down(pyray.KEY_SPACE):
+            return True
+        else:
+            False
+
+    def get_alien_direction(self):
+        dx = 0
+        dy = 1
+        direction = Point(dx,dy)
+        direction = direction.scale(self._cell_size)
+        return direction
+
+    def get_rocket_direction(self):
+        dx = 0
+        dy = -1
+        direction = Point(dx,dy)
+        direction = direction.scale(self._cell_size)
         return direction

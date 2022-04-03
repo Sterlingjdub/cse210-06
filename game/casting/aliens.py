@@ -1,5 +1,8 @@
+from game.shared.point import Point
 from game.casting.actor import Actor
-
+from game.shared.color import Color
+import random
+from game.shared.constants import *
 
 class Aliens(Actor):
     """
@@ -12,8 +15,19 @@ class Aliens(Actor):
     """
     def __init__(self):
         super().__init__()
+
         self._points = 0
-        
+        self.value = 1
+
+        self.set_text("X")
+        self.set_font_size(20)
+        self.set_color(Color(124,252,0))
+        x = random.randint(1, COLS - 1)
+        y = 0
+        position = Point(x, y)
+        position = position.scale(CELL_SIZE)
+        self.set_position(position)
+
     def get_points(self):
         """Gets the aliens point value.
         
