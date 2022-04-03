@@ -21,7 +21,7 @@ class Aliens(Actor):
 
         self.set_text("X")
         self.set_font_size(20)
-        self.set_color(Color(124,252,0))
+        self.set_color(GREEN)
         x = random.randint(1, COLS - 1)
         y = 0
         position = Point(x, y)

@@ -2,6 +2,7 @@ from audioop import alaw2lin
 from game.handlers.score_handler import Score_handler
 from game.casting.actor import Actor
 from game.casting.rocket import Rocket
+from game.casting.boss import Boss
 from game.shared.color import Color
 from game.shared.point import Point
 from constants import *
@@ -26,6 +27,7 @@ class Director:
         self._keyboard_service = keyboard_service
         self._video_service = video_service
         self.score = Score_handler()
+        self.level = 1
         
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
@@ -49,7 +51,7 @@ class Director:
         # Get current actors.
         hero = cast.get_first_actor("heros")
         aliens = cast.get_actors("alien")
-        aliens.extend(cast.get_actors("rock")) # Union of class aliens and rocks
+        aliens.extend(cast.get_actors("boss")) # Union of class aliens and rocks
         velocity = self._keyboard_service.get_direction()
         
         #Manejo del la bala (Rocket)
@@ -86,29 +88,97 @@ class Director:
         Args:
             cast (Cast): The cast of actors.
         """
+        max_x = self._video_service.get_width()
+        max_y = self._video_service.get_height()
+
         banner = cast.get_first_actor("banners")
         hero = cast.get_first_actor("heros")
         aliens = cast.get_actors("alien")
         bullets = cast.get_actors("rockets")
 
-        banner.set_text("Score:"+self.score.get_score())
-        max_x = self._video_service.get_width()
-        max_y = self._video_service.get_height()
-        hero.move_next(max_x, max_y)
-        
-        # For each rocket, if its position is equals to the position of a rock or a gem
-        #both rocket and alien disapears
-        for rocket in bullets:
-            if(rocket.get_position().get_y() > 580):
-                cast.remove_actor("rockets",rocket)  
-            else:
-                for alien in aliens:
-                    if rocket.get_position().equals(alien.get_position()):
-                        self.score.increase_score(alien.value)
-                        alien.change_position()  
-                        cast.remove_actor("rockets",rocket)  
-                        
-                        break  
+        if(int(self.score.get_score()) >= 30):
+                boss = cast.get_actors("boss")
+                if(boss != []):
+                    cast.remove_actor("boss",boss[0])
+                    for alien in aliens:
+                        cast.remove_actor("alien",alien)         
+                banner = cast.get_first_actor("banners")
+                banner.set_text("Score:"+self.score.get_score()+"  !!YOU WIN!!")
+                self.level = 0
+                for n in range(5):
+                    text = "*"
+                    x = random.randint(1, COLS - 1)
+                    y = random.randint(1, ROWS - 1)
+                    position = Point(x, y)
+                    position = position.scale(CELL_SIZE)
+
+                    r = random.randint(0, 255)
+                    g = random.randint(0, 255)
+                    b = random.randint(0, 255)
+                    color = Color(r, g, b)
+                    
+                    artifact = Actor()
+                    artifact.set_text(text)
+                    artifact.set_font_size(FONT_SIZE)
+                    artifact.set_color(color)
+                    artifact.set_position(position)
+                    cast.add_actor("artifacts", artifact)
+        else:
+            if(int(self.score.get_score()) == 10 and self.level == 1):
+                    self.level = self.level+1
+                    boss = Boss()
+                    cast.add_actor("boss", boss)
+                    banner = cast.get_first_actor("banners")
+                    banner.set_text("LEVEL 2")
+
+            if (self.level == 0):
+                banner.set_text("Score:"+self.score.get_score())
+                hero.move_next(max_x, max_y)
+                alien_velocity = self._keyboard_service.get_alien_direction()      
+                artifacts = cast.get_actors("artifact")
+                for r in artifacts:
+                    r.set_velocity(alien_velocity)
+                    r.move_next(max_x,max_y)     
+
+            if(self.level ==1):
+
+                banner.set_text("Score:"+self.score.get_score())
+                hero.move_next(max_x, max_y)
+                
+                # For each rocket, if its position is equals to the position of a rock or a gem
+                #both rocket and alien disapears
+                for rocket in bullets:
+                    if(rocket.get_position().get_y() > 580):
+                        cast.remove_actor("rockets",rocket)
+                    else:
+                        for alien in aliens:
+                            if rocket.get_position().equals(alien.get_position()):
+                                self.score.increase_score(alien.value)
+                                alien.change_position()  
+                                cast.remove_actor("rockets",rocket)         
+                                break  
+                
+            if(self.level ==2):
+                banner = cast.get_first_actor("banners")
+                hero = cast.get_first_actor("heros")
+                banner.set_text("Score:"+self.score.get_score())
+                hero.move_next(max_x, max_y)
+
+                
+                bullets = cast.get_actors("rockets")
+                boss = cast.get_actors("boss")
+
+                for rocket in bullets:
+                    if(rocket.get_position().get_y() > 580):
+                        cast.remove_actor("rockets",rocket)
+                    else:
+                        for alien in boss:
+                            if (rocket.get_position().equals(alien.get_position())):
+                                self.score.increase_score(alien.value) 
+                                cast.remove_actor("rockets",rocket)         
+                                break  
+            
+
         
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
